@@ -272,7 +272,10 @@ int main(int argc, char** argv)
     INT("--searchLimit", searchLimit, "Search limit must be an integer")
     STRING_LIST("ZIMPATH", zimPathes, "ZIMPATH must be a string list")
  }
-
+if (serverPort <= 0 || serverPort > 65535) {
+  std::cerr << "ERROR: Port must be between 1 and 65535" << std::endl;
+  return -1;
+}
  if (!errorString.empty()) {
    std::cerr << errorString << std::endl;
    std::cerr << USAGE << std::endl;
